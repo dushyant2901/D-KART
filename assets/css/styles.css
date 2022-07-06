@@ -221,6 +221,22 @@ ANIMATIONS
     opacity: 1;
   }
 }
+@keyframes slide-in-out {
+  0%,
+  75%,
+  100% {
+    transform: translateX(-120%);
+    opacity: 0;
+    visibility: hidden;
+  }
+
+  25%,
+  70% {
+    opacity: 1;
+    transform: translateX(0%);
+    visibility: visible;
+  }
+}
 
 /* =======================
 MODAL
@@ -297,4 +313,63 @@ MODAL
 .newsletter-btn:hover {
   background-color: var(--salmon-pink);
   margin-top: 1rem;
+}
+
+/* =====================
+NOTIFICATION-TOAST
+======================== */
+
+.notification-toast-container {
+  max-width: 320px;
+  /* background-color: #0f172a; */
+  position: fixed;
+  bottom: 6rem;
+  left: 2rem;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  background: var(--white);
+  padding: 0.75rem;
+  border-radius: var(--borderRadius-md);
+  box-shadow: var(--shadow-3);
+  transform: translateX(-120%);
+  transition: var(--transition);
+  animation: slide-in-out 4s ease-out 4s infinite;
+}
+.notification-toast-container.stop-animation {
+  animation: none;
+}
+.toast-close-btn {
+  position: absolute;
+  top: 0.5rem;
+  right: 0.5rem;
+  border: none;
+  padding: 0;
+  font-size: var(--fs-2);
+  background: transparent;
+  color: var(--sonic-silver);
+  cursor: pointer;
+}
+
+.toast-banner {
+  flex: 30%;
+  border: 2px solid var(--cultured);
+  background: transparent;
+  border-radius: var(--borderRadius-md);
+}
+.toast-info {
+  flex: 75%;
+}
+.toast-message,
+.toast-meta {
+  font-size: var(--fs-7);
+  color: var(--sonic-silver);
+  margin: 0;
+  line-height: 1.25;
+}
+.toast-title {
+  font-size: var(--fs-5);
+  font-weight: var(--weight-600);
+  margin: 0;
+  margin-top: 0.25rem;
 }

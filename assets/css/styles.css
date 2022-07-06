@@ -79,7 +79,7 @@ html {
   --letterSpacing: 1px;
   --transition: 0.3s ease-in-out all;
   --max-width: 1350px;
-  --fixed-width: 600px;
+  --fixed-width: 500px;
 
   /* box shadow*/
   --shadow-1: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
@@ -187,4 +187,114 @@ input::placeholder {
 }
 .btn:hover {
   background: var(--black);
+}
+
+/* =======================
+REUSED CLASSES
+==========================*/
+
+/* =======================
+ANIMATIONS
+==========================*/
+
+@keyframes popup {
+  0% {
+    visibility: hidden;
+    pointer-events: none;
+    opacity: 0;
+  }
+  100% {
+    visibility: visible;
+    pointer-events: all;
+    opacity: 1;
+  }
+}
+@keyframes scaleup {
+  0% {
+    visibility: hidden;
+    transform: scale(0.9);
+    opacity: 0;
+  }
+  100% {
+    visibility: visible;
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+/* =======================
+MODAL
+==========================*/
+
+.modal-overlay {
+  inset: 0;
+  position: fixed;
+  background: rgba(0, 0, 0, 0.5);
+  display: grid;
+  place-items: center;
+  transition: var(--transition);
+  visibility: hidden;
+  pointer-events: none;
+  opacity: 0;
+}
+.show-modal {
+  animation: popup 1s ease-in-out 6s forwards;
+}
+
+.modal {
+  background-color: var(--white);
+  position: relative;
+  visibility: hidden;
+  opacity: 0;
+  animation: scaleup 1s ease-in-out 6.5s forwards;
+  border-radius: var(--borderRadius-lg);
+}
+.newsletter-img-container {
+  display: none;
+}
+.newsletter-info {
+  padding: 3rem;
+  text-align: center;
+  width: 80vw;
+  max-width: var(--fixed-width);
+}
+.modal-close-btn {
+  position: absolute;
+  top: 0.85rem;
+  right: 0.85rem;
+  font-size: var(--fs-3);
+  padding: 0.125rem;
+  display: grid;
+  place-items: center;
+}
+.newsletter-title {
+  margin-bottom: 1rem;
+  font-size: var(--fs-2);
+  font-weight: var(--weight-700);
+  color: var(--onyx);
+  letter-spacing: 2px;
+}
+.newsletter-desc {
+  margin: 1rem;
+  font-size: var(--fs-5);
+  color: var(--sonic-silver);
+}
+.form-input {
+  padding: 0.375rem 0.75rem;
+  border-radius: var(--borderRadius-md);
+  border: 2px solid var(--cultured);
+  background: tranparent;
+  font-size: var(--fs-7);
+}
+.newsletter-btn {
+  background-color: var(--onyx);
+  margin-top: 1rem;
+  padding: 0.75rem;
+  text-transform: uppercase;
+  font-size: var(--fs-7);
+  font-weight: var(--weight-500);
+}
+.newsletter-btn:hover {
+  background-color: var(--salmon-pink);
+  margin-top: 1rem;
 }
